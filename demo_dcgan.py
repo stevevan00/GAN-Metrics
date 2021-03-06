@@ -254,7 +254,7 @@ if __name__ == '__main__':
                                      netG, opt.nz, conv_model='inception_v3', workers=int(opt.workers))
         score_tr[epoch] = s
 
-    # save final metric scores of all epoches
-    np.save('%s/score_tr_ep.npy' % opt.outf, score_tr)
+        # save final metric scores of all epoches
+        np.save('%s/score_tr_ep.npy' % opt.outf, score_tr)
     print('##### training completed :) #####')
     print('### metric scores output is scored at %s/score_tr_ep.npy ###' % opt.outf)
