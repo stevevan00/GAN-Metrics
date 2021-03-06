@@ -98,7 +98,7 @@ class Discriminator(nn.Module):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset', required=True, help='cifar10 | lsun | imagenet | folder | lfw | fake')
+    parser.add_argument('--dataset', required=True, help='cifar10 | lsun | imagenet | folder | lfw | celeba')
     parser.add_argument('--dataroot', required=True, help='path to dataset')
     parser.add_argument('--workers', type=int, help='number of data loading workers', default=4)
     parser.add_argument('--batchSize', type=int, default=64, help='input batch size')
@@ -201,7 +201,7 @@ if __name__ == '__main__':
             netD.zero_grad()
             real_cpu = data[0].to(device)
             batch_size = real_cpu.size(0)
-            label = torch.full((batch_size,), real_label, device=device)
+            label = torch.full((batch_size,), real_label, device=device, dtype=torch.float)
 
             output = netD(real_cpu)
             errD_real = criterion(output, label)
